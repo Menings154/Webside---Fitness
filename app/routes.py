@@ -4,6 +4,7 @@ from werkzeug.urls import url_parse
 from app import app, db
 from app.forms import LoginForm, RegistrationForm
 from app.models import User
+import os
 
 @app.route('/')
 @app.route('/index')
@@ -53,4 +54,5 @@ def register():
 #login view for all
 @app.route('/comparison', methods=['GET', 'POST'])
 def comparison():
-    return render_template('comparison.html', title='Comparison')
+    full_filename = os.path.join(app.config['upload_folder'], 'test.png')
+    return render_template('comparison.html', title='Comparison', test_image=full_filename)
