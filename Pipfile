@@ -13,6 +13,7 @@ datetime = "*"
 werkzeug = "==2.3.0"
 flask-login = "*"
 email-validator = "*"
+matplotlib = "*"
 
 [dev-packages]
 
