@@ -2,15 +2,24 @@ from flask import render_template, flash, redirect, url_for, request
 from flask_login import current_user, login_user, logout_user, login_required
 from werkzeug.urls import url_parse
 from app import app, db
-from app.forms import LoginForm, RegistrationForm
-from app.models import User
+from app.forms import LoginForm, RegistrationForm, DataForm
+from app.models import User, Datapoint
 import os
 
-@app.route('/')
-@app.route('/index')
+from app.testfunctions import make_random_image
+
+@app.route('/', methods=['GET', 'POST'])
+@app.route('/index', methods=['GET', 'POST'])
 @login_required
 def index():
-    return render_template('index.html', title='Home')
+    form = DataForm()
+    if form.validate_on_submit():
+        data = Datapoint(user_id=current_user.id, weight=form.data.data)
+        db.session.add(data)
+        db.session.commit()
+        flash('datapoint added!')
+        make_random_image(r"C:\Users\Benja\Code\Python\Webside - Fitness\app\static\images\test.png")
+    return render_template('index.html', title='Home', form=form)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():

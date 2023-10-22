@@ -14,4 +14,4 @@ def make_random_image(savepath):
     ax.text(x=1, y=500, s=time.time())
     fig.savefig(savepath)
 
-make_random_image(r"C:\Users\Benja\Code\Python\Webside - Fitness\app\static\images\test.png")
+# make_random_image(r"C:\Users\Benja\Code\Python\Webside - Fitness\app\static\images\test.png")
