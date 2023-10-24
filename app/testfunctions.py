@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 import random
 import time
 
+
 def make_random_image(savepath):
     """
     Function creates a list of 10 random numbers and plots it.
