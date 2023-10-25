@@ -65,3 +65,10 @@ def register():
 def comparison():
     full_filename = os.path.join(app.config['upload_folder'], 'test.png')
     return render_template('comparison.html', title='Comparison', test_image=full_filename)
+
+
+#login view for yourself
+@app.route('/home', methods=['GET', 'POST'])
+def home():
+    full_filename = os.path.join(app.config['upload_folder'], 'test.png')
+    return render_template('home.html', title='MyHome', test_image=full_filename)

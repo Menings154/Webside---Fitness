@@ -28,7 +28,7 @@ def make_date_label(fig, ax):
 def linear(x, a, b):
     return a*x + b
 
-def test()
+def test():
     fig, ax = plt.subplots()
     x = np.array([datetime.date(2023, 2, 7), datetime.date(2023, 6, 5), datetime.date(2023, 9, 30)])
     y = np.array([80., 65., 40.])

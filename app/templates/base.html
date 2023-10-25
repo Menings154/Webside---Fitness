@@ -12,7 +12,10 @@
             Fitnesswebsite:
             <a href="{{ url_for('index') }}">Home</a>
             {% if not current_user.is_anonymous %}
-            <a href="{{ url_for('comparison')}}"">Comparison</a>
+            <a href="{{ url_for('home') }}">MyHome</a>
+            {%endif%}
+            {% if not current_user.is_anonymous %}
+            <a href="{{ url_for('comparison')}}">Comparison</a>
             {% endif %}
             {% if current_user.is_anonymous %}
             <a href="{{ url_for('login') }}">Login</a>
