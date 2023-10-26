@@ -6,7 +6,8 @@ from app.forms import LoginForm, RegistrationForm, DataForm
 from app.models import User, Datapoint
 import os
 
-from app.testfunctions import make_random_image
+from app.helper import transform_datapoints
+from app.plotandfit import plot_and_fit
 
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/index', methods=['GET', 'POST'])
@@ -18,7 +19,8 @@ def index():
         db.session.add(data)
         db.session.commit()
         flash('datapoint added!')
-        make_random_image(r"C:\Users\Benja\Code\Python\Webside - Fitness\app\static\images\test.png")
+        x, y = transform_datapoints(datapoints=current_user.datapoints.all(), field="weight")
+        plot_and_fit(x=x, y=y, savepath=r"C:\Users\Benja\Code\Python\Webside - Fitness\app\static\images\test.png")
     return render_template('index.html', title='Home', form=form)
 
 @app.route('/login', methods=['GET', 'POST'])

@@ -32,9 +32,14 @@ def test():
     fig, ax = plt.subplots()
     x = np.array([datetime.date(2023, 2, 7), datetime.date(2023, 6, 5), datetime.date(2023, 9, 30)])
     y = np.array([80., 65., 40.])
-
     plot_data(x, y, fig, ax)
     make_date_label(fig, ax)
     linear_fit(x=mdates.date2num(x), y=y, fig=fig, ax=ax)
-
     fig.savefig("test.png")
+
+def plot_and_fit(x, y, savepath):
+    fig, ax = plt.subplots()
+    plot_data(x, y, fig, ax)
+    make_date_label(fig, ax)
+    linear_fit(x=mdates.date2num(x), y=y, fig=fig, ax=ax)
+    fig.savefig(savepath)
