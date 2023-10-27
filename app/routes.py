@@ -20,7 +20,10 @@ def index():
         db.session.commit()
         flash('datapoint added!')
         x, y = transform_datapoints(datapoints=current_user.datapoints.all(), field="weight")
-        plot_and_fit(x=x, y=y, savepath=r"C:\Users\Benja\Code\Python\Webside - Fitness\app\static\images\\" + str(current_user.id)+".png")
+        weekly_change = plot_and_fit(x=x, y=y,
+                                     savepath=r"C:\Users\Benja\Code\Python\Webside - Fitness\app\static\images\\" + str(current_user.id)+".png")
+        current_user.weekly_change = weekly_change
+        db.session.commit()
     return render_template('index.html', title='Home', form=form)
 
 @app.route('/login', methods=['GET', 'POST'])

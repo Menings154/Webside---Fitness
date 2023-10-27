@@ -10,6 +10,7 @@ class User(UserMixin, db.Model):
     password_hash = db.Column(db.String(128))
     # hier dann die liste an toubles einfügen
     datapoints = db.relationship('Datapoint', backref='person', lazy='dynamic')
+    weekly_change = db.Column(db.String, index=True, unique=True, default='None')
 
     def __repr__(self):
         return '<User {}>'.format(self.username)

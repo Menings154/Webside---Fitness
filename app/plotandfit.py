@@ -4,7 +4,7 @@ import numpy as np
 from scipy.optimize import curve_fit
 import os
 import datetime
-#from app.pp_font import science_layout, pp_font
+from app.pp_font import science_layout, pp_font
 
 def plot_data(x, y, fig, ax):
     "Plot x and y data in a nice format"
@@ -31,7 +31,7 @@ def linear(x, a, b):
 
 def save(fig, savepath):
     "Check if save path exist, if not create it, and finally save the fig there."
-    n=savepath[::-1].find('\\') # find last occurence of '\'
+    n=savepath[::-1].find('\\')  # find last occurence of '\'
     savefolder = savepath[:len(savepath)-n]
     if not os.path.exists(savefolder):
         os.mkdir(savefolder)
@@ -41,12 +41,13 @@ def save(fig, savepath):
 def plot_and_fit(x, y, savepath):
     fig, ax = plt.subplots()
     plot_data(x, y, fig, ax)
-    linear_fit(x=mdates.date2num(x), y=y, fig=fig, ax=ax)
+    popt, pcov = linear_fit(x=mdates.date2num(x), y=y, fig=fig, ax=ax)
     ax.legend()
     make_date_label(fig, ax)
-    #science_layout(ax)
-    #pp_font(x_label='Datum', y_label='Gewicht [kg]')
+    science_layout(ax)
+    pp_font(ax, x_label='Datum', y_label='Gewicht [kg]')
     save(fig=fig, savepath=savepath)
+    return round(popt[0]*7, 3)
 
 
 def test():

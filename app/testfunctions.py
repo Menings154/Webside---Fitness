@@ -2,6 +2,8 @@ import matplotlib.pyplot as plt
 import random
 import time
 
+import matplotlib.dates as mdates
+import datetime
 
 def make_random_image(savepath):
     """
@@ -16,3 +18,7 @@ def make_random_image(savepath):
     fig.savefig(savepath)
 
 # make_random_image(r"C:\Users\Benja\Code\Python\Webside - Fitness\app\static\images\test.png")
+
+x = [datetime.datetime(2023, 10, 22), datetime.datetime(2023, 10, 23)]
+
+print([mdates.date2num(_) for _ in x])

@@ -3,4 +3,5 @@
 {% block content %}
     <h1>Das ist deine eigene Seite, {{ current_user.username }}!</h1>
     <img src="{{test_image}}" alt="my test image">    
+    <h1>{{ current_user.username }} dein Gewicht ändert sich um {{current_user.weekly_change}} kg pro Woche.</h1>
 {% endblock %}
