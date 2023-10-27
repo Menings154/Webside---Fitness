@@ -20,7 +20,7 @@ def index():
         db.session.commit()
         flash('datapoint added!')
         x, y = transform_datapoints(datapoints=current_user.datapoints.all(), field="weight")
-        plot_and_fit(x=x, y=y, savepath=r"C:\Users\Benja\Code\Python\Webside - Fitness\app\static\images\test.png")
+        plot_and_fit(x=x, y=y, savepath=r"C:\Users\Benja\Code\Python\Webside - Fitness\app\static\images\\" + str(current_user.id)+".png")
     return render_template('index.html', title='Home', form=form)
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -72,5 +72,5 @@ def comparison():
 #login view for yourself
 @app.route('/home', methods=['GET', 'POST'])
 def home():
-    full_filename = os.path.join(app.config['upload_folder'], 'test.png')
+    full_filename = os.path.join(app.config['upload_folder'], str(current_user.id)+'.png')
     return render_template('home.html', title='MyHome', test_image=full_filename)
