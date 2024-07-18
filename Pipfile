@@ -4,18 +4,19 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-flask = "*"
-python-dotenv = "*"
-flask-wtf = "*"
-flask-sqlalchemy = "*"
-flask-migrate = "*"
-datetime = "*"
+flask = "==2.3.1"
+python-dotenv = "==1.0.0"
+flask-wtf = "==1.2.1"
+flask-sqlalchemy = "==3.1.1"
+flask-migrate = "==4.0.5"
+datetime = "==5.2"
 werkzeug = "==2.3.0"
-flask-login = "*"
-email-validator = "*"
-matplotlib = "*"
-scipy = "*"
-importlib-metadata = "*"
+flask-login = "==0.6.3"
+email-validator = "==2.1.0.post1"
+matplotlib = "==3.8.1"
+scipy = "==1.11.3"
+importlib-metadata = "==6.8.0"
+numpy = "==1.26.1"
 
 [dev-packages]
 
